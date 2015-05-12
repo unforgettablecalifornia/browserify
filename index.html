@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ch">
+<head>
+<title>DIOR</title>
+<meta name="keywords" content="dior">
+<meta name="description" content="dior">
+<meta charset="utf-8">
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="pragram" content="no-cache">
+<link rel="stylesheet" href="css/cut.css">
+<script type="text/javascript">
+(function(){var e=-1;var t=parseInt(window.screen.width);var i=t/640;var n=navigator.userAgent;if(/Android (\d+\.\d+)/.test(n)){var a=parseFloat(RegExp.$1);if(a>2.3){document.write('<meta name="viewport" content="width=640, minimum-scale = '+i+", maximum-scale = "+i+', target-densitydpi=device-dpi">')}else{document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">')}}else{document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">')}})();
+</script>
+<script type="text/maga" id="maga">
+    <section class='u-arrow f-hide'>
+        <p class="css_sprite01"></p>
+    </section>
+    <section class='p-ct'>
+        <div class='translate-back f-hide'>
+            <%_.each(pages,function(page){%>
+                <div class="<%-page.className%>">
+                    <div class="<%-page.conClassName%>" data-src="<%-page.conBackground%>"></div>
+                </div>
+            <%});%>
+        </div>
+    </section>
+</script>
+</head>
+<body>
+<script src="js/bin/main.js" defer async></script>
+</body>
+</html>
+

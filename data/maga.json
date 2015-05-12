@@ -1,0 +1,106 @@
+{
+    audio:{
+        src:'http://mp3.5.cn/2015/05/11/5550631d609ea.mp3'
+    },
+    pages: [{
+        className: 'm-page m-fengye f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/1.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/2.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/3.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/4.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/5.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/6.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/7.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/8.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/9.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/10.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/11.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/12.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/13.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/14.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/15.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/16.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/17.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/18.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/19.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/20.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/21.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/22.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/23.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/24.jpg'
+    }, {
+        className: 'm-page m-bigTxt f-hide',
+        conClassName: 'page-con lazy-img',
+        conBackground: 'img/25.jpg'
+    }]
+}
