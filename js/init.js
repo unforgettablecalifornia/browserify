@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 14:04:14
+* @Last Modified time: 2015-05-12 14:13:10
 */
 'use strict';
 (function(root,factory){
@@ -46,7 +46,7 @@
             },
             'error':function(error){
                 console.log(error);
-                alert('为什么加载数据失败了，如果失败了，我这里是没法渲染的')；
+                alert('为什么加载数据失败了，如果失败了，我这里是没法渲染的');
             }
         });
     }
