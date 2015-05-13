@@ -29,6 +29,124 @@
         </div>
     </section>
 </script>
+<style type="text/css">
+    .left_menu {
+        position: absolute;
+        width: 100px;
+        height: 10%;
+        border: 1px solid black;
+        left: 100px;
+        z-index: 100;
+    }
+    
+    .right_menu {
+        position: absolute;
+        width: 100px;
+        height: 10%;
+        border: 1px solid black;
+        right: 100px;
+        z-index: 100;
+    }
+    .left_side{
+        position: absolute;
+        width: 420px;
+        height: 100%;
+        left: -420px; 
+        z-index: 1000;
+        background-color: black;
+    }
+    .right_side{
+        position: absolute;
+        width: 420px;
+        height: 100%;
+        right: -420px; 
+        z-index: 1000;
+        background-color: black;
+        opacity: 0.9;
+    }
+    .st{
+        -webkit-transition:all 300ms ease-in-out;
+    }
+    .back{
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+        color: red;
+    }
+    .catalogue{
+        width: 420px;
+        height: -webkit-calc(100% - 200px);
+        overflow: hidden;
+        opacity: 0.8;
+    }
+    .catalogueContent{
+        width: 420px;
+    }
+    .catalogueFoter{
+        height:100px;
+    }
+    .smallImg{
+        width: 180px;
+        height: -webkit-calc((100vh - 200px - 50px)/4);
+        margin-left: 20px;
+        margin-top: 10px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<script type="text/side" id="sidejs">
+    <div class="left_menu">
+
+        <span>目录</span>
+        <span id="pageIndex">1/8</span>
+    </div>
+    <div class="right_menu">
+        <span>菜单</span>
+    </div>
+    <div class="left_side st">
+        <div class="back">
+            <span>返回</span>
+        </div>
+        <div class="catalogue">
+            <div class="catalogueContent">
+                <a><div style="background-image:url(img/1.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/2.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/3.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/4.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/5.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/6.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/7.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/8.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/9.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/10.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/11.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/12.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/13.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/14.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/15.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/16.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/17.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/18.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/19.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/20.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/21.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/22.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/23.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/24.png)" class="smallImg"></div></a>
+                <a><div style="background-image:url(img/25.png)" class="smallImg"></div></a>
+            </div>
+        </div>
+        <div class="catalogueFoter">
+            <div>背景音乐：独家记忆</div>
+            <div>收藏：6541</div>
+            <div>阅读量：100000000000</div>
+        </div>
+    </div>
+    <div class="right_side f-hide st">
+        <div class="back"><span>返回</span></div>
+    </div>
+</script>
 </head>
 <body>
 <script src="js/bin/main.js" defer async></script>

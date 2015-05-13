@@ -2,14 +2,14 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 14:13:10
+* @Last Modified time: 2015-05-12 14:16:21
 */
 'use strict';
 (function(root,factory){
     var app=require('./app.js');
     var _=require('./vender/underscore.js');
     require('./vender/ajax.js');
-    var init=factory.call(root,app.app,_);
+    var init=factory.call(root,app.app,_);//加载数据模块
     init(['./js/bin/follow.js']);
 }(this,function(app,_){
 

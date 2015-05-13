@@ -1,7 +1,7 @@
 (function(root,factory) {
     var $=require('../vender/query.js');
     require('../vender/event.js');
-    module.exports.Cut = factory.call(root, $.$);
+    module.exports.Cut =factory.call(root, $.$);
 }(this, function($) {
     function Cut(height) {
         var car = {
@@ -49,6 +49,25 @@
             },
             arrowIndex: 0, //相册索引
             isArrowOK: true, //判断翻页是否完成
+
+            //跳转到第几页
+            toSlide    : function(index, oldPage) {
+                var pages                        = car._page;
+                var page                         = pages[index];
+                var oldPage                      = oldPage || pages[car._pageNow];
+                page.classList.remove('f-hide');
+                page.classList.add('z-animate');
+                page.classList.add('action'); //跳转到计数页
+                oldPage.classList.add('f-hide');
+                oldPage.classList.remove('z-animate');
+                oldPage.classList.remove('action'); //跳转到计数页
+                car._pageNow                    = index; //修改活动页面的参数
+                // clearInterval(www5cn.timer1);
+                car.lazy_change($(pages[index]), false);
+                // car2.lazy_updown12(index);
+                // car2.display(index);
+                // car2.album($(oldPage),car2._page.eq(index));
+            },
             _setHeight:function(height){
                 $('.p-ct').height(height);
                 $('.m-page').height(height);
@@ -469,11 +488,10 @@
                     if (car._pageNext == 0 && car._pageNow == car._pageNum - 1) {
                         car._firstChange = true;
                     }
-
-
-
-
-
+                    var now=car._pageNext;
+                    var pre=car._pageNow;
+                    $(window).trigger('cut',[now,pre]);
+                    car.lazy_change(cut._page.eq(now), false);
                     setTimeout(function() {
 
                         // 判断是否为最后一页，显示或者隐藏箭头

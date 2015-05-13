@@ -3,16 +3,18 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 13:43:42
+* @Last Modified time: 2015-05-12 17:00:26
 */
-;(function(root,factory){
+;(function(root,factory){//后续模块
     var media=require('./lib/audio.js');
-    factory.call(root,media.media);
-}(this,function(media){
+    var side=require('./lib/side.js');
+    factory.call(root,media.media,side.side);
+}(this,function(media,side){
     //启动音乐模块
     media.init(www5cn.audio.src);
+    side();
 }));
-},{"./lib/audio.js":2}],2:[function(require,module,exports){
+},{"./lib/audio.js":2,"./lib/side.js":5}],2:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
@@ -81,7 +83,7 @@
 }));
 
 
-},{"../vender/touch.js":4,"./coffee.js":3}],3:[function(require,module,exports){
+},{"../vender/touch.js":6,"./coffee.js":3}],3:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
@@ -351,6 +353,177 @@
 
 
 },{}],4:[function(require,module,exports){
+/* 
+* @Author: wanghongxin
+* @Date:   2015-05-08 23:57:28
+* @Last Modified by:   wanghongxin
+* @Last Modified time: 2015-05-13 13:59:00
+*/
+;(function(root,factory){
+    require('../vender/touch.js');
+    var $=window.$;
+    module.exports.drag=factory.call(root,$);
+}(this,function($){
+    return function(target){
+        var pos={
+            start:0,
+            now:0,
+            move:0,
+            end:0,
+            min:null
+        };
+        $(window).on('touchmove.scroll',preventScroll);
+        $(window).on('scroll.scroll',preventScroll);
+        function preventScroll(e){
+            e.preventDefault();
+        }
+        var imgs=$(target).find('.smallImg');
+        // Math.ceil(imgs.length/2)*imgs
+        console.log(imgs)
+        $(target).on('touchmove',function(e){
+            var move=pos.move=e.touches[0].pageY;
+            var delta=move-pos.start;
+            var _now=pos.end+delta;
+            _now=_now>0?0:(_now<pos.min?pos.min:_now);
+            var now=pos.now=_now;
+            $(this).css({
+                'webkitTransform':'translate3d(0,'+now+'px,0)',
+                '-webkit-transform':'translate3d(0,'+now+'px,0)',
+                'transform':'translate3d(0,'+now+'px,0)'
+            });
+            e.preventDefault();
+        });
+        $(target).on('touchstart',function(e){
+            pos.start=e.touches[0].pageY;
+            var rect=$(target).parent().get(0).getBoundingClientRect();
+            var rect0=$(target).find('.smallImg').get(0).getBoundingClientRect();
+            console.log((rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2)));
+            pos.min=(rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2));
+            e.preventDefault();
+        });
+        $(target).on('touchend',function(e){
+            pos.end=pos.now;
+            e.preventDefault();
+        });
+    }
+}));
+},{"../vender/touch.js":6}],5:[function(require,module,exports){
+/* 
+* @Author: wanghongxin
+* @Date:   2015-05-12 14:17:54
+* @Last Modified by:   wanghongxin
+* @Last Modified time: 2015-05-13 15:11:34
+*/
+
+'use strict';
+;(function(root,factory){//后续模块
+    var _=window._;
+    var $=window.$;
+    require('../vender/touch.js');
+    var drag=require('./drag.js');
+    var cut=window.cut;
+    module.exports.side=factory.call(root,_,$,drag.drag,cut);
+}(this,function(_,$,drag){
+    return function(){
+        var temlplate=_.template($('#sidejs').html());
+        $('body').prepend(temlplate());
+        var left_menu=$('.left_menu');
+        var right_menu=$('.right_menu');
+        var right_side=$('.right_side');
+        var left_side=$('.left_side');
+        var back=$('.back');
+        var imgs=$('.smallImg');
+        var pageIndex=$('#pageIndex');
+        var pageTotal=cut._pageNum;
+        init();
+        function init(){
+            left_menu.on('tap',showLeft);
+            right_menu.on('tap',showRight);
+            back.on('tap',hide);
+            $('.catalogueContent a').on('tap',toSlide);
+            drag('.catalogueContent');
+            styleInit();
+            $(window).on('cut',success);
+        }
+        function success(e,now,pre){
+            pageIndex.html(now+1+'/'+pageTotal);
+        }
+        function showLeft(){
+            closeSide();
+            left_side.
+                removeClass('f-hide');
+            cut.page_stop();
+            _.delay(function(){
+                    left_side.css({
+                            'left':'0px'
+                        });
+                }, 100);
+        }
+        function styleInit(){
+            // var rect=$('.catalogueContent').parent().get(0).getBoundingClientRect();
+            var Parentheight=$(window).height()-200;
+            var smallImgHeight=(Parentheight/4)-10;
+            imgs.each(function(index, el) {
+                $(el).css({
+                        height:smallImgHeight+'px'
+                   })
+            });
+        }
+        function showRight(){
+            closeSide();
+            right_side.
+                removeClass('f-hide');
+            left_side.addClass('f-hide');
+            cut.page_stop();
+             _.delay(function(){
+                    right_side.
+                        css({
+                            'right':'0px'
+                        });
+                }, 100);
+        }
+        function closeSide(){
+            right_side.
+                css({
+                    'right':'-420px'
+                });
+            left_side.
+                css({
+                    'left':'-420px'
+                });
+
+            
+        }
+        function toSlide(){
+            var now=$(this).index();
+            if(cut._pageNow===now){
+                return;
+            }
+            cut.toSlide(now);
+            hide();
+            cut.page_start();
+            $(window).trigger('cut',[now])
+        }
+
+        function hide(){
+            right_side.
+                css({
+                    'right':'-420px'
+                });
+            left_side.
+                css({
+                    'left':'-420px'
+                });
+            _.delay(function(){
+                left_side.addClass('f-hide');
+                right_side.addClass('f-hide');
+            }, 300);
+            cut.page_start();
+        }
+
+    }
+}));
+},{"../vender/touch.js":6,"./drag.js":4}],6:[function(require,module,exports){
 //     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
