@@ -16,11 +16,11 @@
 (function(){var e=-1;var t=parseInt(window.screen.width);var i=t/640;var n=navigator.userAgent;if(/Android (\d+\.\d+)/.test(n)){var a=parseFloat(RegExp.$1);if(a>2.3){document.write('<meta name="viewport" content="width=640, minimum-scale = '+i+", maximum-scale = "+i+', target-densitydpi=device-dpi">')}else{document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">')}}else{document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">')}})();
 </script>
 <script type="text/maga" id="maga">
-    <section class='u-arrow f-hide'>
-        <p class="css_sprite01"></p>
+    <section class="u-arrow f-hide">
+        <p class="css_sprite01 updown"></p>
     </section>
-    <section class='p-ct'>
-        <div class='translate-back f-hide'>
+    <section class="p-ct">
+        <div class="translate-back f-hide">
             <%_.each(pages,function(page){%>
                 <div class="<%-page.className%>">
                     <div class="<%-page.conClassName%>" data-src="<%-page.conBackground%>"></div>
@@ -31,7 +31,6 @@
 </script>
 <script type="text/side" id="sidejs">
     <div class="left_menu">
-
         <span>目录</span>
         <span id="pageIndex">1/<%-side.length%></span>
     </div>
@@ -50,7 +49,7 @@
             </div>
         </div>
         <div class="catalogueFoter">
-            <div>背景音乐：独家记忆</div>
+            <div>背景音乐：<%-audio.name%></div>
             <div>收藏：<%-some.saved%></div>
             <div>阅读量：<%-some.readed%></div>
         </div>

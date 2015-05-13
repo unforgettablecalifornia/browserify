@@ -49,6 +49,12 @@
             },
             arrowIndex: 0, //相册索引
             isArrowOK: true, //判断翻页是否完成
+            arrowShow:function(){
+                $('.u-arrow').removeClass('f-hide');
+            },
+            arrowHide:function(){
+                $('.u-arrow').addClass('f-hide');
+            },
             toSlide    : function(index, oldPage) {
                 var pages                        = car._page;
                 var page                         = pages[index];
@@ -60,11 +66,7 @@
                 oldPage.classList.remove('z-animate');
                 oldPage.classList.remove('action'); //跳转到计数页
                 car._pageNow                    = index; //修改活动页面的参数
-                // clearInterval(www5cn.timer1);
                 car.lazy_change($(pages[index]), false);
-                // car2.lazy_updown12(index);
-                // car2.display(index);
-                // car2.album($(oldPage),car2._page.eq(index));
             },
             _setHeight:function(height){
                 $('.p-ct').height(height);
@@ -271,10 +273,6 @@
 
                 // move事件
                 car._handleEvent('move');
-
-
-
-
 
             },
 
@@ -494,8 +492,8 @@
                     setTimeout(function() {
 
                         // 判断是否为最后一页，显示或者隐藏箭头
-                        if (car._pageNext == car._pageNum - 1) $('.u-arrow').addClass('f-hide');
-                        else $('.u-arrow').removeClass('f-hide');
+                        // if (car._pageNext == car._pageNum - 1) $('.u-arrow').addClass('f-hide');
+                        // else $('.u-arrow').removeClass('f-hide');
 
                         car._page.eq(car._pageNow).addClass('f-hide');
 
@@ -532,15 +530,6 @@
 
                 })
             },
-
-            
-            /**
-             *  图片延迟加载功能
-             *  -->替代需要延迟加载的图片
-             *  -->优化加载替代图片
-             *  -->切换功能触发图片的延迟加载
-             *  -->替代图片为400*400的透明大图片
-             */
             /* 图片延迟加载 */
             lazy_img: function() {
                 var lazyNode = $('.lazy-img');
@@ -684,16 +673,6 @@
                 })
             }(),
 
-            // loading显示
-            loadingPageShow: function() {
-                $('.u-pageLoading').show();
-            },
-
-            // loading隐藏
-            loadingPageHide: function() {
-                $('.u-pageLoading').hide();
-            },
-
             // 对象私有变量刷新
             refresh: function() {
                 car._windowHeight = $(window).height();
@@ -726,10 +705,6 @@
                 $('.u-arrow').on('touchmove', function(e) {
                     e.preventDefault()
                 })
-                // $('.p-ct').height($(window).height());
-                // $('.m-page').height($(window).height());
-                // $('#j-mengban').height($(window).height());
-                // $('.translate-back').height($(window).height());
                 car._setHeight(car._height);
             },
             reinit:function(height){
@@ -737,44 +712,15 @@
             },
             // 对象初始化
             init: function() {
-                // 样式，标签的渲染
-                // 对象操作事件处理
                 this.styleInit();
                 this.haddle_envent_fn();
-
-                // 图片预先加载
-                // $('<img />').attr('src', $('#r-cover').val());
-                $('<img />').attr('src', $('.m-fengye').find('.page-con').attr('data-src'));
-
-                // loading执行一次
-                // var loading_time = new Date().getTime();
+                cut.arrowShow();
                 car.page_start();
-
-                +function() {
-                    setTimeout(function() {
-                        // 模版提示隐藏
-                        setTimeout(function() {
-                            $('.m-alert').addClass('f-hide');
-                        }, 1000);
-
-                        // 显示正面
-                        $('#j-mengban').addClass('z-show');
-
-                        // 显示封面内容
-                        setTimeout(function() {
-                            $('.translate-back').removeClass('f-hide');
-                            $('.m-fengye').removeClass('f-hide');
-                            car.height_auto(car._page.eq(car._pageNow), 'false');
-                        }, 0);
-
-                        // media初始化
-                        // car.media_init();
-
-                        // 延迟加载后面三个页面图片
-                        car.lazy_start();
-                        car._setHeight(car._height);
-                    }, 0);
-                }();
+                $('.translate-back').removeClass('f-hide');
+                $('.m-fengye').removeClass('f-hide');
+                car.height_auto(car._page.eq(car._pageNow), 'false');
+                car.lazy_start();
+                car._setHeight(car._height);
             }
         };
         return car;

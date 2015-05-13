@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 17:27:23
+* @Last Modified time: 2015-05-13 18:16:08
 */
 
 'use strict';
@@ -111,6 +111,5 @@
             }, 300);
             cut.page_start();
         }
-
     }
 }));

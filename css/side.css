@@ -1,65 +1,66 @@
 /*侧边栏模块*/
-    .left_menu {
-        position: absolute;
-        width: 100px;
-        height: 10%;
-        border: 1px solid black;
-        left: 100px;
-        z-index: 100;
-    }
-    
-    .right_menu {
-        position: absolute;
-        width: 100px;
-        height: 10%;
-        border: 1px solid black;
-        right: 100px;
-        z-index: 100;
-    }
-    .left_side{
-        position: absolute;
-        width: 420px;
-        height: 100%;
-        left: -420px; 
-        z-index: 1000;
-        background-color: black;
-    }
-    .right_side{
-        position: absolute;
-        width: 420px;
-        height: 100%;
-        right: -420px; 
-        z-index: 1000;
-        background-color: black;
-        opacity: 0.9;
-    }
-    .st{
-        -webkit-transition:all 300ms ease-in-out;
-    }
-    .back{
-        width: 100px;
-        height: 100px;
-        font-size: 20px;
-        color: red;
-    }
-    .catalogue{
-        width: 420px;
-        height: -webkit-calc(100% - 200px);
-        overflow: hidden;
-        opacity: 0.8;
-    }
-    .catalogueContent{
-        width: 420px;
-    }
-    .catalogueFoter{
-        height:100px;
-    }
-    .smallImg{
-        width: 180px;
-        height: -webkit-calc((100vh - 200px - 50px)/4);
-        margin-left: 20px;
-        margin-top: 10px;
-        display: inline-block;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+.left_menu {
+    position: absolute;
+    width: 100px;
+    height: 10%;
+    border: 1px solid black;
+    left: 100px;
+    z-index: 100;
+}
+
+.right_menu {
+    position: absolute;
+    width: 100px;
+    height: 10%;
+    border: 1px solid black;
+    right: 100px;
+    z-index: 100;
+}
+.left_side{
+    position: absolute;
+    width: 420px;
+    height: 100%;
+    left: -420px; 
+    z-index: 1000;
+    background-color: black;
+}
+.right_side{
+    position: absolute;
+    width: 420px;
+    height: 100%;
+    right: -420px; 
+    z-index: 1000;
+    background-color: black;
+    opacity: 0.9;
+}
+.st{
+    -webkit-transition:all 300ms ease-in-out;
+}
+.back{
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+    color: red;
+}
+.catalogue{
+    width: 420px;
+    height: -webkit-calc(100% - 200px);
+    overflow: hidden;
+    opacity: 0.8;
+}
+.catalogueContent{
+    width: 420px;
+}
+.catalogueFoter{
+    height:100px;
+    color:red;
+}
+.smallImg{
+    width: 180px;
+    height: -webkit-calc((100vh - 200px - 50px)/4);
+    margin-left: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
