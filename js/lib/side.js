@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 15:11:34
+* @Last Modified time: 2015-05-13 17:27:23
 */
 
 'use strict';
@@ -12,11 +12,12 @@
     require('../vender/touch.js');
     var drag=require('./drag.js');
     var cut=window.cut;
-    module.exports.side=factory.call(root,_,$,drag.drag,cut);
+    var www5cn=window.www5cn;
+    module.exports.side=factory.call(root,_,$,drag.drag,cut,www5cn);
 }(this,function(_,$,drag){
     return function(){
         var temlplate=_.template($('#sidejs').html());
-        $('body').prepend(temlplate());
+        $('body').prepend(temlplate(www5cn));
         var left_menu=$('.left_menu');
         var right_menu=$('.right_menu');
         var right_side=$('.right_side');

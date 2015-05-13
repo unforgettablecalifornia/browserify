@@ -33,7 +33,7 @@
     <div class="left_menu">
 
         <span>目录</span>
-        <span id="pageIndex">1/8</span>
+        <span id="pageIndex">1/<%-side.length%></span>
     </div>
     <div class="right_menu">
         <span>菜单</span>
@@ -44,37 +44,15 @@
         </div>
         <div class="catalogue">
             <div class="catalogueContent">
-                <a><div style="background-image:url(img/1.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/2.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/3.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/4.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/5.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/6.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/7.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/8.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/9.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/10.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/11.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/12.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/13.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/14.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/15.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/16.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/17.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/18.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/19.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/20.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/21.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/22.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/23.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/24.png)" class="smallImg"></div></a>
-                <a><div style="background-image:url(img/25.png)" class="smallImg"></div></a>
+                <%_.each(side,function(item){%>
+                    <a><div style="background-image:url(<%-item.src%>)" class="smallImg"></div></a>
+                <%});%>
             </div>
         </div>
         <div class="catalogueFoter">
             <div>背景音乐：独家记忆</div>
-            <div>收藏：6541</div>
-            <div>阅读量：100000000000</div>
+            <div>收藏：<%-some.saved%></div>
+            <div>阅读量：<%-some.readed%></div>
         </div>
     </div>
     <div class="right_side f-hide st">
