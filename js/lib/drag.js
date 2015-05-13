@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 13:59:00
+* @Last Modified time: 2015-05-13 16:18:04
 */
 ;(function(root,factory){
     require('../vender/touch.js');
@@ -19,12 +19,8 @@
         };
         $(window).on('touchmove.scroll',preventScroll);
         $(window).on('scroll.scroll',preventScroll);
-        function preventScroll(e){
-            e.preventDefault();
-        }
         var imgs=$(target).find('.smallImg');
         // Math.ceil(imgs.length/2)*imgs
-        console.log(imgs)
         $(target).on('touchmove',function(e){
             var move=pos.move=e.touches[0].pageY;
             var delta=move-pos.start;
@@ -42,7 +38,6 @@
             pos.start=e.touches[0].pageY;
             var rect=$(target).parent().get(0).getBoundingClientRect();
             var rect0=$(target).find('.smallImg').get(0).getBoundingClientRect();
-            console.log((rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2)));
             pos.min=(rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2));
             e.preventDefault();
         });
@@ -50,5 +45,9 @@
             pos.end=pos.now;
             e.preventDefault();
         });
+        
+        function preventScroll(e){
+            e.preventDefault();
+        }
     }
 }));

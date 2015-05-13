@@ -3,18 +3,28 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 17:00:26
+* @Last Modified time: 2015-05-13 15:53:34
 */
 ;(function(root,factory){//后续模块
     var media=require('./lib/audio.js');
     var side=require('./lib/side.js');
-    factory.call(root,media.media,side.side);
-}(this,function(media,side){
+    var advert=require('./lib/banner.js');
+    var interaction=require('./lib/interaction.js');
+    factory.call(root,media.media,side.side,advert.advert,interaction.interaction);
+}(this,function(media,side,advert,interaction){
     //启动音乐模块
     media.init(www5cn.audio.src);
+    //启动侧边栏模块
     side();
+    //启动广告模块
+    advert(100,{
+        'gdt_banner.js':[1,80],
+        '5cn_banner.js':[81,100]
+    },'http://img0.hx.com/magazine0120/js/');
+    //启动互动模块
+    interaction();
 }));
-},{"./lib/audio.js":2,"./lib/side.js":5}],2:[function(require,module,exports){
+},{"./lib/audio.js":2,"./lib/banner.js":3,"./lib/interaction.js":6,"./lib/side.js":7}],2:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
@@ -83,7 +93,46 @@
 }));
 
 
-},{"../vender/touch.js":6,"./coffee.js":3}],3:[function(require,module,exports){
+},{"../vender/touch.js":8,"./coffee.js":4}],3:[function(require,module,exports){
+/* 
+* @Author: wanghongxin
+* @Date:   2015-05-08 23:57:28
+* @Last Modified by:   wanghongxin
+* @Last Modified time: 2015-05-13 15:35:50
+*/
+;(function(root,factory){
+    var $=window.$;
+    var cut=window.cut;
+    module.exports.advert=factory.call(root,$,cut);
+}(this,function($,cut){
+
+    var getRandom=function(max){
+        return Math.random() * (max) | 1;
+      };
+      var getBannerAd=function(url){
+          var script=document.createElement('script');
+          script.src=url;
+          $('body').append(script);
+      };
+      var fetchBanner=function(length,opts,prefix){
+          cut.reinit($(window).height()-100);
+          var random=getRandom(length);
+          for(var i in opts){
+              if(opts.hasOwnProperty(i)){
+                  console.log(random)
+                  if(opts[i][0]<=random&&random<=opts[i][1]){
+                      console.log(i)
+                      getBannerAd((prefix?prefix:'')+i);
+                  }
+              }
+          }
+      };
+      
+      return fetchBanner;
+}));
+
+
+},{}],4:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
@@ -352,12 +401,12 @@
 })(Zepto);
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 13:59:00
+* @Last Modified time: 2015-05-13 16:18:04
 */
 ;(function(root,factory){
     require('../vender/touch.js');
@@ -374,12 +423,8 @@
         };
         $(window).on('touchmove.scroll',preventScroll);
         $(window).on('scroll.scroll',preventScroll);
-        function preventScroll(e){
-            e.preventDefault();
-        }
         var imgs=$(target).find('.smallImg');
         // Math.ceil(imgs.length/2)*imgs
-        console.log(imgs)
         $(target).on('touchmove',function(e){
             var move=pos.move=e.touches[0].pageY;
             var delta=move-pos.start;
@@ -397,7 +442,6 @@
             pos.start=e.touches[0].pageY;
             var rect=$(target).parent().get(0).getBoundingClientRect();
             var rect0=$(target).find('.smallImg').get(0).getBoundingClientRect();
-            console.log((rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2)));
             pos.min=(rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2));
             e.preventDefault();
         });
@@ -405,9 +449,72 @@
             pos.end=pos.now;
             e.preventDefault();
         });
+        
+        function preventScroll(e){
+            e.preventDefault();
+        }
     }
 }));
-},{"../vender/touch.js":6}],5:[function(require,module,exports){
+},{"../vender/touch.js":8}],6:[function(require,module,exports){
+/* 
+* @Author: wanghongxin
+* @Date:   2015-05-12 14:17:54
+* @Last Modified by:   wanghongxin
+* @Last Modified time: 2015-05-13 16:47:14
+*/
+
+'use strict';
+;(function(root,factory){
+    var _=window._;
+    var $=window.$;
+    require('../vender/touch.js');
+    module.exports.interaction=factory.call(root,_,$);
+}(this,function(_,$){
+    return function(){
+        var html=   '<div id="clickme">'+
+                    '</div>'+
+                    '<div class="inter f-hide st"></div>';
+        var template=_.template(html);
+        $('body').prepend(template());
+        var interaction=$('#clickme');
+        var inter=$('.inter');
+        var showed=false;
+        interaction.on('tap',act);
+        function act(){
+            showed=!showed;
+            showed&&up();
+            !showed&&down();
+        }
+        function show(){
+            inter.css({
+                   'webkitTransform':'translate3d(0,'+(-100)+'px,0)',
+                   '-webkit-transform':'translate3d(0,'+(-100)+'px,0)',
+                   'transform':'translate3d(0,'+(-100)+'px,0)'
+                });
+        }
+        function bye(){
+            inter.addClass('f-hide');
+        }
+        function hide(){
+            inter.css({
+                   'webkitTransform':'translate3d(0,'+(0)+'px,0)',
+                   '-webkit-transform':'translate3d(0,'+(0)+'px,0)',
+                   'transform':'translate3d(0,'+(0)+'px,0)'
+                });
+
+        }
+        function up(){
+            inter.removeClass('f-hide');
+            _.delay(show, 100);
+        }
+        function down(){
+            hide();
+            _.delay(bye, 300);
+        }
+
+    }
+}));
+},{"../vender/touch.js":8}],7:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
@@ -523,7 +630,7 @@
 
     }
 }));
-},{"../vender/touch.js":6,"./drag.js":4}],6:[function(require,module,exports){
+},{"../vender/touch.js":8,"./drag.js":5}],8:[function(require,module,exports){
 //     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.

@@ -3,18 +3,20 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 13:10:29
+* @Last Modified time: 2015-05-13 15:21:38
 */
 'use strict';
 (function(root,factory){
 	var Cut=require('./lib/cut.js');
-	module.exports.app=factory.call(root,Cut.Cut);//app启动模块
-}(this,function(Cut){
+	var $=window.$;
+	module.exports.app=factory.call(root,Cut.Cut,$);//app启动模块
+}(this,function(Cut,$){
 	return function(){
 		//转场模块
-		var cut=new Cut;
+		var cut=new Cut();
 		window.cut=cut;
 		cut.init();
+		//广告模块
 		//媒体模块
 		//评论模块
 		//目录模块
@@ -129,8 +131,6 @@
             },
             arrowIndex: 0, //相册索引
             isArrowOK: true, //判断翻页是否完成
-
-            //跳转到第几页
             toSlide    : function(index, oldPage) {
                 var pages                        = car._page;
                 var page                         = pages[index];
@@ -151,8 +151,9 @@
             _setHeight:function(height){
                 $('.p-ct').height(height);
                 $('.m-page').height(height);
-                // $('#j-mengban').height(height);
+                $('.page-con').height(height);
                 $('.translate-back').height(height);
+                cut._height=height;
             },
             _isOwnEmpty: function(obj) {
                 for (var name in obj) {
@@ -424,15 +425,15 @@
                     // 设置下一页面的显示和位置        
                     if (car._movePosition == 'up') {
                         s = parseInt($(window).scrollTop());
-                        if (s > 0) l = $(window).height() + s;
-                        else l = $(window).height();
+                        if (s > 0) l = car._height + s;
+                        else l = car._height;
                         node[0].style[car._prefixStyle('transform')] = 'translate(0,' + l + 'px)' + _translateZ;
                         $(node[0]).attr('data-translate', l);
 
                         $(node[1]).attr('data-translate', 0);
                     } else {
-                        node[0].style[car._prefixStyle('transform')] = 'translate(0,-' + Math.max($(window).height(), $(node[0]).height()) + 'px)' + _translateZ;
-                        $(node[0]).attr('data-translate', -Math.max($(window).height(), $(node[0]).height()));
+                        node[0].style[car._prefixStyle('transform')] = 'translate(0,-' + Math.max(car._height, $(node[0]).height()) + 'px)' + _translateZ;
+                        $(node[0]).attr('data-translate', -Math.max(car._height, $(node[0]).height()));
 
                         $(node[1]).attr('data-translate', 0);
                     }
@@ -456,7 +457,7 @@
 
                 // 当前的页面移动
                 if ($(node[1]).attr('data-translate')) y_2 = y + parseInt($(node[1]).attr('data-translate'));
-                scale = 1 - Math.abs(y * 0.2 / $(window).height());
+                scale = 1 - Math.abs(y * 0.2 / car._height);
                 y_2 = y_2 / 5;
                 node[1].style[car._prefixStyle('transform')] = 'translate(0,' + y_2 + 'px)' + _translateZ + ' scale(' + scale + ')';
             },
@@ -504,7 +505,7 @@
                 car._page.eq(car._pageNext)[0].style[car._prefixStyle('transform')] = 'translate(0,0)' + _translateZ;
 
                 // 当前页面变小的移动
-                var y = car._touchDeltaY > 0 ? $(window).height() / 5 : -$(window).height() / 5;
+                var y = car._touchDeltaY > 0 ? car._height / 5 : -car._height / 5;
                 var scale = 0.8;
                 car._page.eq(car._pageNow)[0].style[car._prefixStyle('transform')] = 'translate(0,' + y + 'px)' + _translateZ + ' scale(' + scale + ')';
 
@@ -524,9 +525,9 @@
                 }
 
                 if (car._movePosition == 'up') {
-                    car._page.eq(car._pageNext)[0].style[car._prefixStyle('transform')] = 'translate(0,' + $(window).height() + 'px)' + _translateZ;
+                    car._page.eq(car._pageNext)[0].style[car._prefixStyle('transform')] = 'translate(0,' + car._height + 'px)' + _translateZ;
                 } else {
-                    car._page.eq(car._pageNext)[0].style[car._prefixStyle('transform')] = 'translate(0,-' + $(window).height() + 'px)' + _translateZ;
+                    car._page.eq(car._pageNext)[0].style[car._prefixStyle('transform')] = 'translate(0,-' + car._height + 'px)' + _translateZ;
                 }
 
                 car._page.eq(car._pageNow)[0].style[car._prefixStyle('transform')] = 'translate(0,0)' + _translateZ + ' scale(1)';
@@ -729,7 +730,7 @@
             },
             height_auto: function(ele, val) {
                 ele.children('.page-con').css('height', 'auto');
-                var height = $(window).height();
+                var height = car._height;
 
                 // 需要解除固定高度的page卡片
                 var vial = true;
@@ -748,17 +749,6 @@
                     if ((!$('.p-ct').hasClass('fixed')) && val == 'true') $('.p-ct').addClass('fixed');
                 }
             },
-
-
-
-
-
-
-
-
-
-
-
             // 微信的分享提示
             wxShare: function() {
                 $('body').on('click', '.bigTxt-btn-wx', function() {

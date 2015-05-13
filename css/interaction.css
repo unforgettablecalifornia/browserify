@@ -1,0 +1,17 @@
+/*互动模块*/
+#clickme{
+    position: absolute;
+    background-color:black;
+    width:100px;
+    height:100px;
+    bottom: 100px;
+    z-index: 99;
+}
+.inter{
+    position: absolute;
+    background-color:red;
+    width:640px;
+    height:100px;
+    bottom: -100px;
+    z-index: 99;
+}
