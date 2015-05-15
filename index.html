@@ -31,20 +31,22 @@
 </script>
 <script type="text/side" id="sidejs">
     <div class="left_menu">
-        <span>目录</span>
+        <span>目 录</span>
         <span id="pageIndex">1/<%-side.length%></span>
     </div>
     <div class="right_menu">
-        <span>菜单</span>
+        <span>菜 单</span>
     </div>
     <div class="left_side st">
         <div class="back">
-            <span>返回</span>
+            <span><em></em>目录</span>
         </div>
         <div class="catalogue">
             <div class="catalogueContent">
-                <%_.each(side,function(item){%>
-                    <a><div style="background-image:url(<%-item.src%>)" class="smallImg"></div></a>
+                <%_.each(side,function(item,index,side){%>
+                    <div style="background-image:url(<%-item.src%>)" class="smallImg">
+						<span><%=index+1%></span>
+					</div>
                 <%});%>
             </div>
         </div>
@@ -55,11 +57,37 @@
         </div>
     </div>
     <div class="right_side f-hide st">
-        <div class="back"><span>返回</span></div>
+        <div class="menu_nav">
+			<div class="menu_top"><img src="img/user_img.jpg"></div>
+			<div class="back">
+				<span><em></em>菜单</span>
+			</div>
+			<div class="user_img">
+				<div class="message"><em></em></div>
+				<div class="attention">关 注</div>
+				<div class="name">我的名字</div>
+			</div>
+		</div>
+		<div class="reputation">
+			<div><span>125555</span><span>喜欢</span></div>
+			<div><span>125</span><span>粉丝</span></div>
+			<div><span>125555</span><span>关注</span></div>
+		</div>
+		<div class="other_list">
+			<ul>
+				<li><a href="javascript:;">推荐杂志</a></li>
+				<li><a href="javascript:;">热门杂志</a></li>
+				<li><a href="javascript:;">最新杂志</a></li>
+				<li><a href="javascript:;">该作者其他杂志</a></li>
+				<li><a href="javascript:;">首页</a></li>
+				<li><a href="javascript:;">移动端下载</a></li>
+			</ul>
+		</div>
     </div>
 </script>
 </head>
 <body>
+ 
 <script src="js/bin/main.js" defer async></script>
 </body>
 </html>

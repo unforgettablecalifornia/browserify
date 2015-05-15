@@ -32,7 +32,7 @@
             right_menu.on('tap',showRight);
             back.on('tap',hide);
             $('.catalogueContent a').on('tap',toSlide);
-            drag('.catalogueContent');
+            //drag('.catalogueContent');
             styleInit();
             $(window).on('cut',success);
         }
@@ -86,6 +86,7 @@
             
         }
         function toSlide(){
+			
             var now=$(this).index();
             if(cut._pageNow===now){
                 return;
