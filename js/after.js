@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 18:35:02
+* @Last Modified time: 2015-05-18 10:40:14
 */
 ;(function(root,factory){//后续模块
     var media=require('./lib/audio.js');
@@ -11,7 +11,7 @@
     var interaction=require('./lib/interaction.js');
     var share=require('./lib/share.js');
     var www5cn=window.www5cn;
-    factory.call(root,media.media,side.side,advert.advert,interaction.interaction,share.share,www5cn);
+    factory.call(root,media,side,advert,interaction,share,www5cn);
 }(this,function(media,side,advert,interaction,share,www5cn){
     //启动音乐模块
     media.init(www5cn.audio.src);

@@ -52,13 +52,13 @@
         </div>
         <div class="catalogueFoter">
             <div>背景音乐：<%-audio.name%></div>
-            <div>收藏：<%-some.saved%></div>
-            <div>阅读量：<%-some.readed%></div>
+            <div>收藏：<%-magazine.saved%></div>
+            <div>阅读量：<%-magazine.readed%></div>
         </div>
     </div>
     <div class="right_side f-hide st">
         <div class="menu_nav">
-			<div class="menu_top"><img src="img/user_img.jpg"></div>
+			<div class="menu_top"><img src="<%-user.avatar%>"></div>
 			<div class="back">
 				<span><em></em>菜单</span>
 			</div>
@@ -69,18 +69,18 @@
 			</div>
 		</div>
 		<div class="reputation">
-			<div><span>125555</span><span>喜欢</span></div>
-			<div><span>125</span><span>粉丝</span></div>
-			<div><span>125555</span><span>关注</span></div>
+			<div><span><%-user.liked%></span><span>喜欢</span></div>
+			<div><span><%-user.fans%></span><span>粉丝</span></div>
+			<div><span><%-user.observers%></span><span>关注</span></div>
 		</div>
 		<div class="other_list">
 			<ul>
-				<li><a href="javascript:;">推荐杂志</a></li>
-				<li><a href="javascript:;">热门杂志</a></li>
-				<li><a href="javascript:;">最新杂志</a></li>
-				<li><a href="javascript:;">该作者其他杂志</a></li>
-				<li><a href="javascript:;">首页</a></li>
-				<li><a href="javascript:;">移动端下载</a></li>
+				<li><a href="<%-user.recommendUrl%>">推荐杂志</a></li>
+				<li><a href="<%-user.hotUrl%>">热门杂志</a></li>
+				<li><a href="<%-user.newestUrl%>">最新杂志</a></li>
+				<li><a href="<%-user.restMagazineUrl%>">该作者其他杂志</a></li>
+				<li><a href="<%-user.homeUrl%>">首页</a></li>
+				<li><a href="<%-user.downloadUrl%>">移动端下载</a></li>
 			</ul>
 		</div>
     </div>

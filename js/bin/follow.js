@@ -3,7 +3,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 18:35:02
+* @Last Modified time: 2015-05-18 10:40:14
 */
 ;(function(root,factory){//后续模块
     var media=require('./lib/audio.js');
@@ -12,7 +12,7 @@
     var interaction=require('./lib/interaction.js');
     var share=require('./lib/share.js');
     var www5cn=window.www5cn;
-    factory.call(root,media.media,side.side,advert.advert,interaction.interaction,share.share,www5cn);
+    factory.call(root,media,side,advert,interaction,share,www5cn);
 }(this,function(media,side,advert,interaction,share,www5cn){
     //启动音乐模块
     media.init(www5cn.audio.src);
@@ -28,17 +28,17 @@
     // 微信分享模块
     share(www5cn.wx);
 }));
-},{"./lib/audio.js":2,"./lib/banner.js":3,"./lib/interaction.js":6,"./lib/share.js":7,"./lib/side.js":8}],2:[function(require,module,exports){
+},{"./lib/audio.js":2,"./lib/banner.js":3,"./lib/interaction.js":5,"./lib/share.js":6,"./lib/side.js":7}],2:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 13:45:40
+* @Last Modified time: 2015-05-18 10:39:01
 */
 ;(function(root,factory){
     require('./coffee.js');
     require('../vender/touch.js');
-    module.exports.media=factory.call(root,$);    
+    module.exports=factory.call(root,$);    
 }(this,function($){
     var service={
         audioPlay:audioPlay,
@@ -97,17 +97,17 @@
 }));
 
 
-},{"../vender/touch.js":10,"./coffee.js":4}],3:[function(require,module,exports){
+},{"../vender/touch.js":9,"./coffee.js":4}],3:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 15:35:50
+* @Last Modified time: 2015-05-18 10:38:30
 */
 ;(function(root,factory){
     var $=window.$;
     var cut=window.cut;
-    module.exports.advert=factory.call(root,$,cut);
+    module.exports=factory.call(root,$,cut);
 }(this,function($,cut){
 
     var getRandom=function(max){
@@ -408,63 +408,9 @@
 },{}],5:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
-* @Date:   2015-05-08 23:57:28
-* @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 16:18:04
-*/
-;(function(root,factory){
-    require('../vender/touch.js');
-    var $=window.$;
-    module.exports.drag=factory.call(root,$);
-}(this,function($){
-    return function(target){
-        var pos={
-            start:0,
-            now:0,
-            move:0,
-            end:0,
-            min:null
-        };
-        $(window).on('touchmove.scroll',preventScroll);
-        $(window).on('scroll.scroll',preventScroll);
-        var imgs=$(target).find('.smallImg');
-        // Math.ceil(imgs.length/2)*imgs
-        $(target).on('touchmove',function(e){
-            var move=pos.move=e.touches[0].pageY;
-            var delta=move-pos.start;
-            var _now=pos.end+delta;
-            _now=_now>0?0:(_now<pos.min?pos.min:_now);
-            var now=pos.now=_now;
-            $(this).css({
-                'webkitTransform':'translate3d(0,'+now+'px,0)',
-                '-webkit-transform':'translate3d(0,'+now+'px,0)',
-                'transform':'translate3d(0,'+now+'px,0)'
-            });
-            e.preventDefault();
-        });
-        $(target).on('touchstart',function(e){
-            pos.start=e.touches[0].pageY;
-            var rect=$(target).parent().get(0).getBoundingClientRect();
-            var rect0=$(target).find('.smallImg').get(0).getBoundingClientRect();
-            pos.min=(rect.bottom-rect.top)-((rect0.bottom-rect0.top+10)*Math.ceil(imgs.length/2));
-            e.preventDefault();
-        });
-        $(target).on('touchend',function(e){
-            pos.end=pos.now;
-            e.preventDefault();
-        });
-        
-        function preventScroll(e){
-            e.preventDefault();
-        }
-    }
-}));
-},{"../vender/touch.js":10}],6:[function(require,module,exports){
-/* 
-* @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 16:47:14
+* @Last Modified time: 2015-05-18 10:40:09
 */
 
 'use strict';
@@ -472,7 +418,7 @@
     var _=window._;
     var $=window.$;
     require('../vender/touch.js');
-    module.exports.interaction=factory.call(root,_,$);
+    module.exports=factory.call(root,_,$);
 }(this,function(_,$){
     return function(){
         var html=   '<div id="clickme">'+
@@ -518,30 +464,30 @@
 
     }
 }));
-},{"../vender/touch.js":10}],7:[function(require,module,exports){
+},{"../vender/touch.js":9}],6:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 18:33:14
+* @Last Modified time: 2015-05-18 10:40:23
 */
 
 'use strict';
 ;(function(root,factory){//后续模块
     var $=window.$;
     require('./weixin.js');
-    module.exports.share=factory.call(root,$);
+    module.exports=factory.call(root,$);
 }(this,function($){
     return function(opts){
         $(document.body).wx(opts);
     }
 }));
-},{"./weixin.js":9}],8:[function(require,module,exports){
+},{"./weixin.js":8}],7:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 18:16:08
+* @Last Modified time: 2015-05-18 11:09:27
 */
 
 'use strict';
@@ -549,11 +495,11 @@
     var _=window._;
     var $=window.$;
     require('../vender/touch.js');
-    var drag=require('./drag.js');
+    // var drag=require('./drag.js');
     var cut=window.cut;
     var www5cn=window.www5cn;
-    module.exports.side=factory.call(root,_,$,drag.drag,cut,www5cn);
-}(this,function(_,$,drag){
+    module.exports=factory.call(root,_,$,cut,www5cn);
+}(this,function(_,$,cut,www5cn){
     return function(){
         var temlplate=_.template($('#sidejs').html());
         $('body').prepend(temlplate(www5cn));
@@ -570,7 +516,7 @@
             left_menu.on('tap',showLeft);
             right_menu.on('tap',showRight);
             back.on('tap',hide);
-            $('.catalogueContent a').on('tap',toSlide);
+            $('.catalogueContent div').on('tap',toSlide);
             //drag('.catalogueContent');
             styleInit();
             $(window).on('cut',success);
@@ -619,7 +565,7 @@
                 });
             left_side.
                 css({
-                    'left':'-420px'
+                    'left':'-300px'
                 });
 
             
@@ -643,7 +589,7 @@
                 });
             left_side.
                 css({
-                    'left':'-420px'
+                    'left':'-300px'
                 });
             _.delay(function(){
                 left_side.addClass('f-hide');
@@ -653,7 +599,7 @@
         }
     }
 }));
-},{"../vender/touch.js":10,"./drag.js":5}],9:[function(require,module,exports){
+},{"../vender/touch.js":9}],8:[function(require,module,exports){
 /* 
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
@@ -907,7 +853,7 @@ $.fn.wx.version = '1.0.0';
 
 
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //     Zepto.js
 //     (c) 2010-2015 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.

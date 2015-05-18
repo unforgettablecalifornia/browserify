@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 16:47:14
+* @Last Modified time: 2015-05-18 10:40:09
 */
 
 'use strict';
@@ -10,7 +10,7 @@
     var _=window._;
     var $=window.$;
     require('../vender/touch.js');
-    module.exports.interaction=factory.call(root,_,$);
+    module.exports=factory.call(root,_,$);
 }(this,function(_,$){
     return function(){
         var html=   '<div id="clickme">'+

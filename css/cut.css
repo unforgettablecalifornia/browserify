@@ -41,7 +41,7 @@ legend, hr, caption { visibility:hidden; font-size:0; width:0; height:0; line-he
           transition-timing-function: ease-in-out;
 }
 html {height: 100%;}
-body { position: relative; font-family:"微软雅黑"; width: 640px; max-width: 640px; min-width: 640px; height: 100%; margin: 0 auto; }
+body { position: relative; font-family:"微软雅黑";  width: 640px; max-width: 640px; min-width: 640px; height: 100%; margin: 0 auto; }
 body h1,body h2,body h3,body h4,body h5,body h6,body strong,body em {font-weight:normal; } /*微软雅体 将原有的bold属性去掉*/
 
 textarea:focus,input:focus { border: 1px solid #71b643; }

@@ -8,9 +8,21 @@
         src:'2.mp3',
         name:'独家记忆'
     },
-    some:{
+    magazine:{
         'saved':10000,
         'readed':100000000
+    },
+    user:{
+        'avatar':'img/user_img.jpg',
+        'liked':5201314,
+        'fans':11111,
+        'observers':123232,
+        'recommendUrl':'http://www.baidu.com',
+        'hotUrl':'http://www.baidu.com',
+        'newestUrl':'http://www.baidu.com',
+        'restMagazineUrl':'http://www.baidu.com',
+        'homeUrl':'http://www.baidu.com',
+        'downloadUrl':'http://www.baidu.com'
     },
     side:[
             {

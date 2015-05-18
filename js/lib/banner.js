@@ -2,12 +2,12 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 15:35:50
+* @Last Modified time: 2015-05-18 10:38:30
 */
 ;(function(root,factory){
     var $=window.$;
     var cut=window.cut;
-    module.exports.advert=factory.call(root,$,cut);
+    module.exports=factory.call(root,$,cut);
 }(this,function($,cut){
 
     var getRandom=function(max){

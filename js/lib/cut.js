@@ -1,7 +1,7 @@
 (function(root,factory) {
     var $=require('../vender/query.js');
     require('../vender/event.js');
-    module.exports.Cut =factory.call(root, $.$);
+    module.exports =factory.call(root, $.$);
 }(this, function($) {
     function Cut(height) {
         var car = {

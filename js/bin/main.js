@@ -3,13 +3,13 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 15:21:38
+* @Last Modified time: 2015-05-18 10:35:03
 */
 'use strict';
 (function(root,factory){
 	var Cut=require('./lib/cut.js');
 	var $=window.$;
-	module.exports.app=factory.call(root,Cut.Cut,$);//app启动模块
+	module.exports.app=factory.call(root,Cut,$);//app启动模块
 }(this,function(Cut,$){
 	return function(){
 		//转场模块
@@ -83,7 +83,7 @@
 (function(root,factory) {
     var $=require('../vender/query.js');
     require('../vender/event.js');
-    module.exports.Cut =factory.call(root, $.$);
+    module.exports =factory.call(root, $.$);
 }(this, function($) {
     function Cut(height) {
         var car = {

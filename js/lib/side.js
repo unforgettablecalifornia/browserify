@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 18:16:08
+* @Last Modified time: 2015-05-18 11:09:27
 */
 
 'use strict';
@@ -10,11 +10,11 @@
     var _=window._;
     var $=window.$;
     require('../vender/touch.js');
-    var drag=require('./drag.js');
+    // var drag=require('./drag.js');
     var cut=window.cut;
     var www5cn=window.www5cn;
-    module.exports.side=factory.call(root,_,$,drag.drag,cut,www5cn);
-}(this,function(_,$,drag){
+    module.exports=factory.call(root,_,$,cut,www5cn);
+}(this,function(_,$,cut,www5cn){
     return function(){
         var temlplate=_.template($('#sidejs').html());
         $('body').prepend(temlplate(www5cn));
@@ -31,7 +31,7 @@
             left_menu.on('tap',showLeft);
             right_menu.on('tap',showRight);
             back.on('tap',hide);
-            $('.catalogueContent a').on('tap',toSlide);
+            $('.catalogueContent div').on('tap',toSlide);
             //drag('.catalogueContent');
             styleInit();
             $(window).on('cut',success);
@@ -80,7 +80,7 @@
                 });
             left_side.
                 css({
-                    'left':'-420px'
+                    'left':'-300px'
                 });
 
             
@@ -104,7 +104,7 @@
                 });
             left_side.
                 css({
-                    'left':'-420px'
+                    'left':'-300px'
                 });
             _.delay(function(){
                 left_side.addClass('f-hide');

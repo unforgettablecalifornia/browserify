@@ -2,12 +2,12 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-12 13:45:40
+* @Last Modified time: 2015-05-18 10:39:01
 */
 ;(function(root,factory){
     require('./coffee.js');
     require('../vender/touch.js');
-    module.exports.media=factory.call(root,$);    
+    module.exports=factory.call(root,$);    
 }(this,function($){
     var service={
         audioPlay:audioPlay,
