@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-18 10:40:09
+* @Last Modified time: 2015-05-18 15:18:12
 */
 
 'use strict';
@@ -15,7 +15,7 @@
     return function(){
         var html=   '<div id="clickme">'+
                     '</div>'+
-                    '<div class="inter f-hide st"></div>';
+                    '<div class="inter f-hide st"> <div class="l"><a href="javascript:;" class="i-back"></a></div> <div class="r"><a  href="javascript:;" class="i-reviews"></a><a href="javascript:;" class="i-good"></a><a href="javascript:;" class="i-Share"></a></div></div>';
         var template=_.template(html);
         $('body').prepend(template());
         var interaction=$('#clickme');

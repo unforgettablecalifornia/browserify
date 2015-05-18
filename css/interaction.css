@@ -9,9 +9,16 @@
 }
 .inter{
     position: absolute;
-    background-color:red;
+    background-color:#252525;
     width:640px;
     height:100px;
-    bottom: -100px;
+    bottom: -101px;
     z-index: 99;
 }
+.inter a{ width:55px; height:45px; display:inline-block; margin:25px 10px 0 90px; }
+.inter .l { float:left;}
+.inter .r { float:right;}
+.inter a.i-back { background:url(../../img/b_nav_icon.png) no-repeat 0px 0px; background-size:100%; margin-left:10px;}
+.inter a.i-reviews { background:url(../../img/b_nav_icon.png) no-repeat 0 -57px; background-size:100%;}
+.inter a.i-good { background:url(../../img/b_nav_icon.png) no-repeat 0 -115px; background-size:100%;}
+.inter a.i-Share { background:url(../../img/b_nav_icon.png) no-repeat 0 -170px; background-size:100%;}

@@ -410,7 +410,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-18 10:40:09
+* @Last Modified time: 2015-05-18 15:18:12
 */
 
 'use strict';
@@ -423,7 +423,7 @@
     return function(){
         var html=   '<div id="clickme">'+
                     '</div>'+
-                    '<div class="inter f-hide st"></div>';
+                    '<div class="inter f-hide st"> <div class="l"><a href="javascript:;" class="i-back"></a></div> <div class="r"><a  href="javascript:;" class="i-reviews"></a><a href="javascript:;" class="i-good"></a><a href="javascript:;" class="i-Share"></a></div></div>';
         var template=_.template(html);
         $('body').prepend(template());
         var interaction=$('#clickme');
@@ -487,7 +487,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-18 11:09:27
+* @Last Modified time: 2015-05-18 13:51:03
 */
 
 'use strict';
@@ -524,14 +524,21 @@
         function success(e,now,pre){
             pageIndex.html(now+1+'/'+pageTotal);
         }
+
+
+
         function showLeft(){
             closeSide();
             left_side.
                 removeClass('f-hide');
-            cut.page_stop();
+            cut.page_stop();              
+
+
             _.delay(function(){
                     left_side.css({
-                            'left':'0px'
+                            'webkitTransform':'translate3d(300px,0,0)',
+                            'transform':'translate3d(300px,0,0)',
+                            '-webkit-transform':'translate3d(300px,0,0)'
                         });
                 }, 100);
         }
@@ -542,7 +549,7 @@
             imgs.each(function(index, el) {
                 $(el).css({
                         height:smallImgHeight+'px'
-                   })
+                   });
             });
         }
         function showRight(){
@@ -554,19 +561,26 @@
              _.delay(function(){
                     right_side.
                         css({
-                            'right':'0px'
-                        });
+                                'webkitTransform':'translate3d(-420px,0,0)',
+                                'transform':'translate3d(-420px,0,0)',
+                                '-webkit-transform':'translate3d(-420px,0,0)'
+                            });
                 }, 100);
         }
         function closeSide(){
             right_side.
                 css({
-                    'right':'-420px'
-                });
+                    
+                        'webkitTransform':'translate3d(0,0,0)',
+                        'transform':'translate3d(0,0,0)',
+                        '-webkit-transform':'translate3d(0,0,0)'
+                    });
             left_side.
                 css({
-                    'left':'-300px'
-                });
+                        'webkitTransform':'translate3d(0,0,0)',
+                        'transform':'translate3d(0,0,0)',
+                        '-webkit-transform':'translate3d(0,0,0)'
+                    });
 
             
         }
@@ -579,18 +593,22 @@
             cut.toSlide(now);
             hide();
             cut.page_start();
-            $(window).trigger('cut',[now])
+            $(window).trigger('cut',[now]);
         }
 
         function hide(){
             right_side.
                 css({
-                    'right':'-420px'
-                });
+                        'webkitTransform':'translate3d(0,0,0)',
+                        'transform':'translate3d(0,0,0)',
+                        '-webkit-transform':'translate3d(0,0,0)'
+                    });
             left_side.
                 css({
-                    'left':'-300px'
-                });
+                        'webkitTransform':'translate3d(0,0,0)',
+                        'transform':'translate3d(0,0,0)',
+                        '-webkit-transform':'translate3d(0,0,0)'
+                    });
             _.delay(function(){
                 left_side.addClass('f-hide');
                 right_side.addClass('f-hide');

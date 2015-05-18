@@ -466,12 +466,19 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
 }
 .inter{
     position: absolute;
-    background-color:red;
+    background-color:#252525;
     width:640px;
     height:100px;
-    bottom: -100px;
+    bottom: -101px;
     z-index: 99;
 }
+.inter a{ width:55px; height:45px; display:inline-block; margin:25px 10px 0 90px; }
+.inter .l { float:left;}
+.inter .r { float:right;}
+.inter a.i-back { background:url(../../img/b_nav_icon.png) no-repeat 0px 0px; background-size:100%; margin-left:10px;}
+.inter a.i-reviews { background:url(../../img/b_nav_icon.png) no-repeat 0 -57px; background-size:100%;}
+.inter a.i-good { background:url(../../img/b_nav_icon.png) no-repeat 0 -115px; background-size:100%;}
+.inter a.i-Share { background:url(../../img/b_nav_icon.png) no-repeat 0 -170px; background-size:100%;}
 /*侧边栏模块*/
 .left_menu {
  
@@ -481,15 +488,15 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
 
 .right_menu,.left_menu  {
     position: absolute;
-    width: 24%;
-    height: 8%;
+    width: 160px;
+    height: 80px;
+	line-height:80px;
     border: 1px solid #fff;
     right: 100px;
     z-index: 100;
 	top:20px;
 	font-size:24px;
-	text-align:center;
-	line-height:100px;
+	text-align:center;	
 	color:#fff;
 }
 .left_side{
@@ -552,6 +559,7 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
 	bottom:0;
 	width:20px;
 	height:20px;
+	line-height:20px;
 	background:#fa3174;
 	color:#fff;
 	font-size:14px;
@@ -565,8 +573,9 @@ textarea:focus,input:focus { border: 1px solid #71b643; }
 }
 
 
-.menu_nav {width:420px;height:340px;overflow:hidden;position:relative;}	
-.menu_top { width:420px; height:340px; -webkit-filter:blur(20px); position:absolute; left:0; top:0;}
+.menu_nav {width:420px;height:340px;overflow:hidden;position:relative;  }	
+.menu_top { width:420px; height:340px; -webkit-filter:blur(20px); 
+filter:blur(20px); position:absolute; left:0; top:0; background:url(../../img/user_img.jpg); filter: url(blur.svg#blur);}
 .menu_top img { width:420px; height:340px;}
 .user_img { width:150px; height:150px; border-radius:150px; background-size:100%; background:url(../../img/user_img.jpg) center; position:relative; top:20px; margin:0 auto;}
 .user_img .message,.user_img .attention  { width:70px; height:70px; border-radius:60px; background:rgba(0,0,0,0.2); position:absolute; top:45px;}
