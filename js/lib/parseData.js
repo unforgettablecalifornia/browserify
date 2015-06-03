@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-06-03 15:43:36
+* @Last Modified time: 2015-06-03 19:04:03
 */
 ;(function(root,factory){
     var _=window._;
@@ -11,7 +11,8 @@
 }(this,function(_,$){
     return function(data) {
                 var maga = {};
-                data = data.magazine;
+                data = data.obj;
+                console.log(data)
                 // maga.id = data.id;
                 // maga.wgUser = data.wgUser;
                 // maga.media={
@@ -39,6 +40,7 @@
                             floatages: _.map(item.elementsList,
                                 function(item, index) {
                                     var element;
+                                    console.log(item.elementType)
                                     switch (item.elementType) {
                                         case 'image':
                                             element={
@@ -130,7 +132,7 @@
                                             };
                                             break;
                                     }
-                                    element.uniqueId=_.uniqueId('floatage_');
+                                    // element.uniqueId=_.uniqueId('floatage_');
                                     return element;
                                 })
                         };
