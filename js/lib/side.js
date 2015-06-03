@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-18 13:51:03
+* @Last Modified time: 2015-06-03 18:20:26
 */
 
 'use strict';
@@ -15,9 +15,9 @@
     var www5cn=window.www5cn;
     module.exports=factory.call(root,_,$,cut,www5cn);
 }(this,function(_,$,cut,www5cn){
-    return function(){
+    return function(data){
         var temlplate=_.template($('#sidejs').html());
-        $('body').prepend(temlplate(www5cn));
+        $('body').prepend(temlplate(data));
         var left_menu=$('.left_menu');
         var right_menu=$('.right_menu');
         var right_side=$('.right_side');

@@ -2,16 +2,25 @@
 * @Author: wanghongxin
 * @Date:   2015-05-08 23:57:28
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-13 17:36:44
+* @Last Modified time: 2015-06-03 17:57:55
 */
 'use strict';
 (function(root,factory){
     var app=require('./app.js');
     var _=require('./vender/underscore.js');
     require('./vender/ajax.js');
-    var data=factory.call(root,app.app,_);//加载数据模块
+    var parseData=require('./lib/parseData.js');
+    var data=factory.call(root,app.app,_,parseData);//加载数据模块
+    // $.
+    //     ajax({
+    //         url: 'data/page.json',
+    //         type: 'get',
+    //         success:function(data){
+    //             console.log(parseData(data));
+    //         }
+    //     });
     data(['./js/bin/follow.js']);
-}(this,function(app,_){
+}(this,function(app,_,parseData){
 
     function getScript(url){
         var script=document.createElement('script');
@@ -22,18 +31,20 @@
     return function(targets){
         var magaTpl=_.template($('#maga').html());
         $.ajax({
-            'url':'data/maga.json',
+            'url':'data/page.json',
             'dataType':'text',
             'success':function(data){
                 data=eval("("+data+")");
-                window.www5cn=data;
-                $('body').prepend(magaTpl(data));
+
+                var newData=parseData(data);
+                window.www5cn=newData;
+                $('body').prepend(magaTpl(newData));
                 var real_init=_.after(3,initialize)
-                var preLoadList=_.first(data.pages,3);
+                var preLoadList=_.first(newData.pages,3);
                 _.each(preLoadList,function(item){
                     var img=new Image();
                     img.onload=real_init;
-                    img.src=item.conBackground;
+                    img.src=item.background.style.backgroundImage.replace(/url\((.{0,})\)/,'$1');
                 });
 
                 function initialize(){

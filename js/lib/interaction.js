@@ -2,7 +2,7 @@
 * @Author: wanghongxin
 * @Date:   2015-05-12 14:17:54
 * @Last Modified by:   wanghongxin
-* @Last Modified time: 2015-05-18 15:18:12
+* @Last Modified time: 2015-06-03 18:14:59
 */
 
 'use strict';
@@ -12,12 +12,10 @@
     require('../vender/touch.js');
     module.exports=factory.call(root,_,$);
 }(this,function(_,$){
-    return function(){
-        var html=   '<div id="clickme">'+
-                    '</div>'+
-                    '<div class="inter f-hide st"> <div class="l"><a href="javascript:;" class="i-back"></a></div> <div class="r"><a  href="javascript:;" class="i-reviews"></a><a href="javascript:;" class="i-good"></a><a href="javascript:;" class="i-Share"></a></div></div>';
+    return function(data){
+        var html=$('#inter').html();   
         var template=_.template(html);
-        $('body').prepend(template());
+        $('body').prepend(template(data));
         var interaction=$('#clickme');
         var inter=$('.inter');
         var showed=false;
